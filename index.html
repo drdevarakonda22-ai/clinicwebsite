@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile Dental Hyderabad | Best Dental Clinic in Hyderabad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --forest: #1b3022;
+            --rose-gold: #c5a059;
+            --ivory: #fffdfa;
+            --text-dark: #2c2c2c;
+            --light-gray: #f4f4f4;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Marcellus', serif; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo-btn {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: var(--forest);
+            font-size: 1.3rem; font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .nav-actions { display: flex; gap: 15px; align-items: center; }
+
+        .btn-nav {
+            padding: 10px 20px; border-radius: 5px; text-decoration: none;
+            font-weight: 600; font-size: 0.9rem; display: flex;
+            align-items: center; gap: 8px; transition: 0.3s;
+        }
+
+        .btn-call-nav { background: var(--forest); color: white; }
+        .btn-whatsapp-nav { background: #25D366; color: white; }
+
+        /* --- WELCOME POPUP --- */
+        #welcome-modal {
+            display: flex; position: fixed; z-index: 9999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+        }
+        #welcome-modal.show { opacity: 1; pointer-events: auto; }
+        .popup-content {
+            background: white; padding: 40px; border-radius: 20px;
+            text-align: center; width: 90%; max-width: 500px; position: relative;
+            border-top: 6px solid var(--rose-gold); animation: popIn 0.5s ease;
+        }
+        .close-popup { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: #aaa; }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(rgba(27, 48, 34, 0.9), rgba(27, 48, 34, 0.7)), url('https://via.placeholder.com/1600x900') center/cover;
+            color: white; padding: 120px 10% 80px; text-align: center;
+        }
+        .hero h1 { font-size: 3.5rem; margin: 10px 0; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 20px auto; }
+
+        /* --- HIGHLIGHTS --- */
+        .highlights-bar {
+            background: var(--ivory); padding: 50px 10%; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px; margin-top: -50px; position: relative; z-index: 10;
+        }
+        .highlight-item {
+            background: white; padding: 30px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center;
+            border-bottom: 4px solid var(--rose-gold); transition: 0.3s;
+        }
+        .highlight-icon { font-size: 2rem; color: var(--rose-gold); margin-bottom: 15px; }
+
+        /* --- DOCTORS SECTION --- */
+        .doctor-section { padding: 80px 5%; background: #fdfaf4; }
+        
+        .lead-row {
+            display: flex; justify-content: center; gap: 30px;
+            flex-wrap: wrap; margin-bottom: 50px;
+        }
+        .lead-doc-wrapper { position: relative; margin-top: 70px; width: 320px; }
+        .lead-img {
+            width: 140px; height: 140px; background: #ddd; border-radius: 50%;
+            border: 5px solid white; object-fit: cover; position: absolute;
+            top: -70px; left: 50%; transform: translateX(-50%); z-index: 2;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .lead-card {
+            background: white; padding: 80px 20px 30px; border-radius: 20px;
+            text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--forest); height: 100%; box-sizing: border-box;
+        }
+
+        .consultant-row {
+            display: flex; justify-content: center; gap: 20px;
+            flex-wrap: wrap; max-width: 900px; margin: 0 auto;
+        }
+        .text-only-card {
+            flex: 1; min-width: 300px; background: white; padding: 25px 30px;
+            border-radius: 15px; text-align: left; display: flex;
+            align-items: center; gap: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-left: 5px solid var(--forest);
+        }
+        .doc-icon { font-size: 1.5rem; color: var(--rose-gold); }
+        .role { color: var(--rose-gold); font-weight: 600; font-size: 0.9rem; display: block; margin-top: 5px; }
+        .exp { color: #666; font-size: 0.85rem; font-weight: 500; }
+
+        /* --- SERVICES --- */
+        .services-section { padding: 80px 10%; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .service-card { background: white; padding: 30px; border-left: 3px solid var(--rose-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .service-list { list-style: none; padding: 0; margin-top: 15px; }
+        .service-list li { margin-bottom: 8px; font-size: 0.9rem; color: #555; display: flex; align-items: start; gap: 10px; }
+        .service-list li::before { content: "•"; color: var(--rose-gold); font-weight: bold; }
+
+        /* --- TESTIMONIALS --- */
+        .testimonial-section { padding: 80px 0; background: white; text-align: center; }
+        .scroll-container {
+            display: flex; overflow-x: auto; gap: 30px; padding: 20px 5%;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
+        }
+        .scroll-container::-webkit-scrollbar { display: none; }
+        .testi-card {
+            flex: 0 0 320px; scroll-snap-align: center; background: white;
+            border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid #eee; text-align: left;
+        }
+        .testi-img { width: 100%; height: 250px; object-fit: cover; }
+        .testi-content { padding: 25px; }
+        .testi-name { color: var(--forest); font-weight: bold; margin-top: 15px; display: block; }
+
+        /* --- CONTACT --- */
+        .final-contact { padding: 80px 5%; background: var(--light-gray); text-align: center; }
+        .contact-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
+        .big-btn {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 160px; height: 140px; border-radius: 20px; text-decoration: none;
+            color: white; font-weight: bold; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .btn-c-call { background: var(--forest); }
+        .btn-c-wa { background: #25D366; }
+        .btn-c-insta { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+        .btn-c-loc { background: #4285F4; }
+
+        footer { background: #112015; color: #888; padding: 40px; text-align: center; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .lead-doc-wrapper, .text-only-card { width: 100%; flex: none; }
+            .nav-actions { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="welcome-modal">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">×</span>
+            <h2 style="color:var(--forest); margin-bottom:10px;">Welcome!</h2>
+            <span style="color:var(--rose-gold); font-weight:bold;">✨ Free 3D Scan & Aligner Discount ✨</span>
+            <p>Limited time offer for new patients.</p>
+            <div style="display:flex; gap:10px; justify-content:center; margin-top:20px;">
+                <a href="tel:9315075640" class="btn-nav btn-call-nav">Call Us</a>
+                <a href="https://wa.me/919315075640" class="btn-nav btn-whatsapp-nav">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#" class="logo-btn">
+            <i class="fas fa-tooth"></i>
+            <span>Smile Dental Hyderabad</span>
+        </a>
+        <div class="nav-actions">
+            <a href="tel:9315075640" class="btn-nav btn-call-nav"><i class="fas fa-phone-alt"></i> Call Us</a>
+            <a href="https://wa.me/919315075640" class="btn-nav btn-whatsapp-nav"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div style="background: white; color: var(--forest); padding: 8px 20px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; font-weight: bold; margin-bottom: 20px;">
+            <i class="fas fa-star" style="color: #FFD700;"></i> Highly Rated on Google
+        </div>
+        <h1>25 Years of <br>Excellence</h1>
+        <p>Painless Care. Intensive Treatment Planning.</p>
+    </section>
+
+    <div class="highlights-bar">
+        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-certificate"></i></div><strong>25 Years Legacy</strong><br><small>Since 2001</small></div>
+        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-tags"></i></div><strong>Best Prices</strong><br><small>Affordable Aligners</small></div>
+        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-expand"></i></div><strong>Free 3D Scan</strong><br><small>Digital Plan</small></div>
+        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-trophy"></i></div><strong>Top Rated</strong><br><small>4.8/5 Stars</small></div>
+    </div>
+
+    <section class="doctor-section">
+        <h2 style="text-align: center; color: var(--forest); font-size: 2.5rem;">Our Expert Team</h2>
+        <p style="text-align: center; margin-bottom: 60px;">Led by experience, driven by care.</p>
+
+        <div class="lead-row">
+            <div class="lead-doc-wrapper">
+                <img src="https://lh3.googleusercontent.com/d/1muCRGIUJy0ChYtvH2P15A6VGp8CuBvOC" alt="Dr. Sindhuu" class="lead-img">
+                <div class="lead-card">
+                    <h3>Dr. Sindhuu Devarakonda</h3>
+                    <span class="role">Laser, Implant & RCT Specialist</span>
+                    <span class="exp">12 Years Experience</span>
+                </div>
+            </div>
+            <div class="lead-doc-wrapper">
+                <img src="https://lh3.googleusercontent.com/d/1KTDN-sn9Zoz00ZNJzHku48jIV7wlLK3C" alt="Dr. Vinay" class="lead-img">
+                <div class="lead-card">
+                    <h3>Dr. Vinay Kumar</h3>
+                    <span class="role">Implantology Specialist</span>
+                    <span class="exp">6 Years Experience</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultant-row">
+            <div class="text-only-card">
+                <div class="doc-icon"><i class="fas fa-user-md"></i></div>
+                <div class="text-info">
+                    <h3 style="margin:0;">Dr. Ravi Kumar . C</h3>
+                    <span class="role">Prosthodontist & Implantologist</span>
+                    <span class="exp">30 Years Experience</span>
+                </div>
+            </div>
+            <div class="text-only-card">
+                <div class="doc-icon"><i class="fas fa-user-md"></i></div>
+                <div class="text-info">
+                    <h3 style="margin:0;">Dr. Madhavi . C</h3>
+                    <span class="role">Senior Dental Surgeon (MDS)</span>
+                    <span class="exp">30 Years Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <h2 style="text-align: center; color: var(--forest); margin-bottom: 40px;">Comprehensive Treatments</h2>
+        <div class="services-grid">
+            <div class="service-card"><h4>General</h4><ul class="service-list"><li>Dental Checkups</li><li>Scaling & Polishing</li><li>Tooth-Colored Fillings</li></ul></div>
+            <div class="service-card"><h4>Root Canal</h4><ul class="service-list"><li>Single Sitting RCT</li><li>Painless Laser RCT</li><li>Post & Core</li></ul></div>
+            <div class="service-card"><h4>Cosmetic</h4><ul class="service-list"><li>Veneers & Laminates</li><li>Smile Designing</li><li>Teeth Whitening</li></ul></div>
+            <div class="service-card"><h4>Implants</h4><ul class="service-list"><li>Single Tooth Implant</li><li>Full Arch Implants</li><li>Basal Implants</li></ul></div>
+            <div class="service-card"><h4>Orthodontics</h4><ul class="service-list"><li>Invisible Aligners</li><li>Ceramic Braces</li><li>Metal Braces</li></ul></div>
+            <div class="service-card"><h4>Pediatric</h4><ul class="service-list"><li>Fluoride Treatment</li><li>Pit & Fissure Sealants</li><li>Habit Breaking</li></ul></div>
+            <div class="service-card"><h4>Periodontics</h4><ul class="service-list"><li>Gum Surgery</li><li>Laser Gum Therapy</li><li>Bone Grafting</li></ul></div>
+            <div class="service-card"><h4>Oral Surgery</h4><ul class="service-list"><li>Wisdom Tooth Removal</li><li>Jaw Correction</li></ul></div>
+            <div class="service-card"><h4>Trauma Care</h4><ul class="service-list"><li>Fracture Surgery</li><li>TMJ Correction</li></ul></div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <h2 style="color: var(--forest);">Happy Smiles</h2>
+        <p>Swipe to read patient stories.</p>
+        <div class="scroll-container">
+            <div class="testi-card"><img src="https://lh3.googleusercontent.com/d/1t99fahRl-lD0P-tqPGpK7BJFLH76OpjF" class="testi-img"><div class="testi-content"><p>"Best aligner experience!"</p><span class="testi-name">- Happy Patient</span></div></div>
+            <div class="testi-card"><img src="https://lh3.googleusercontent.com/d/1uHTljbp7gBmlE-MPjX9cnARnf1__yacX" class="testi-img"><div class="testi-content"><p>"Totally painless root canal."</p><span class="testi-name">- Happy Patient</span></div></div>
+            <div class="testi-card"><img src="https://lh3.googleusercontent.com/d/13ZfNs1sce633QM53Bgmq4XZRtBVnfU4c" class="testi-img"><div class="testi-content"><p>"25 years of trust!"</p><span class="testi-name">- Happy Patient</span></div></div>
+            <div class="testi-card"><img src="https://lh3.googleusercontent.com/d/1mU9ow52VBdA8sHnJq0kDDIlzmIJiOSgC" class="testi-img"><div class="testi-content"><p>"My smile looks perfect now."</p><span class="testi-name">- Happy Patient</span></div></div>
+            <div class="testi-card"><img src="https://lh3.googleusercontent.com/d/1NgzYq-GdH5t1HFZEVtYcKdn45EGfLiKF" class="testi-img"><div class="testi-content"><p>"Great pediatric care."</p><span class="testi-name">- Happy Patient</span></div></div>
+            <div class="testi-card"><img src="https://lh3.googleusercontent.com/d/1DfZWV3bNsYmg_FI800JQuXr1m6YgZmaq" class="testi-img"><div class="testi-content"><p>"Excellent service."</p><span class="testi-name">- Happy Patient</span></div></div>
+            <div class="testi-card"><img src="https://lh3.googleusercontent.com/d/1f_lOyIhwlkmt62fd5SJxDxowHiKpLyW2" class="testi-img"><div class="testi-content"><p>"Best in Hyderabad."</p><span class="testi-name">- Happy Patient</span></div></div>
+        </div>
+    </section>
+
+    <section class="final-contact">
+        <h2 style="color:var(--forest);">Get In Touch</h2>
+        <div class="contact-grid">
+            <a href="tel:9315075640" class="big-btn btn-c-call"><i class="fas fa-phone-volume"></i><span>Call Us</span></a>
+            <a href="https://wa.me/919315075640?text=Appointment" class="big-btn btn-c-wa"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+            <a href="https://instagram.com/smiledentalhyderabad" class="big-btn btn-c-insta"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+            <a href="https://maps.app.goo.gl/akwXdUps5uVvXoTX9" class="big-btn btn-c-loc"><i class="fas fa-map-marked-alt"></i><span>Location</span></a>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Smile Dental Hyderabad. <br>
+        25 Years of Trusted Clinical Excellence.
+    </footer>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('welcome-modal').classList.add('show');
+            }, 500);
+        };
+        function closePopup() {
+            document.getElementById('welcome-modal').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
